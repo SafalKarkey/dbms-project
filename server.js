@@ -21,8 +21,9 @@ app.use(express.static(path.join(__dirname)));
 
 // Handle form submission
 app.post('/submit', (req, res) => {
-  const { name} = req.body; // Extract form data
+  const { name } = req.body; // Extract form data
 
+  console.log(name);
   const sql = 'INSERT INTO users (name) VALUES ($1)';
   const values = [name];
 
@@ -34,7 +35,24 @@ app.post('/submit', (req, res) => {
     } else {
       console.log('Data saved successfully');
       res.status(200).send('Data saved successfully');
-      // res.redirect('/index.html');
+    }
+  });
+});
+
+app.post('/delete-name', (req, res)=>{
+  const { delname } = req.body;
+
+  console.log(delname);
+  const sql = 'DELETE FROM users WHERE name = $1';
+  const values = [delname];
+
+  pool.query(sql, values, (error, result)=>{
+    if(error){
+      console.error('Error deleting data: ', error);
+      res.status(500).send('Couldnt delete');
+    } else{
+      console.log('Data deleted ($1) successfully');
+      res.status(200).send('Data deleted');
     }
   });
 });

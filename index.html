@@ -14,9 +14,16 @@
     <p class="Texts">Enter your name:</p>
     <table>
         <form method="POST" action="/submit">
-            <label for="name">Field 1:</label>
-            <input type="text" id="nam" name="name" required><br><br>
-
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            <button type="submit">Submit</button>
+        </form>
+    </table>
+    <p class="Texts">Delete name: </p>
+    <table>
+        <form method="POST" action="/delete-name">
+            <label for="delname">Delete name: </label>
+            <input type="text" id="delname" name="delname">
             <button type="submit">Submit</button>
         </form>
     </table>
