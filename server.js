@@ -2,14 +2,15 @@ const { Pool } = require('pg');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
+require('dotenv').config();
 
 
 const pool = new Pool({
-  host: 'localhost',
-  port: 5432,
-  database: 'mydb',
-  user: 'postgres',
-  password: 'safalkarkey777',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  database: process.env.DB_DATABASE,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
 });
 
 //create instance of an express app to handle html requests
